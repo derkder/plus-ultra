@@ -1,0 +1,17 @@
+public enum Language
+{
+    English, Chinese
+}
+ 
+public void GreetPeople(string name, Language lang)
+{
+    switch (lang)
+    {
+        case Language.English:
+            EnglishGreeting(name);
+            break;
+        case Language.Chinese:
+            ChineseGreeting(name);
+            break;
+    }
+}
