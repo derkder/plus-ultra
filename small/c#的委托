@@ -1,0 +1,19 @@
+委托就是可以用方法名调用另一方法的便捷方法，可以简化switch等语句的重复。最近做项目的时候恰好需要用到委托，便来复习及学习委托的使用。
+namespace Func
+{
+    public delegate void MyDel();//声明一个自定义委托
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            MyDel say1 = SayHi;
+            MyDel say2 = new MyDel(SayHi);
+            say1();
+            say2();
+        }
+        static void SayHi()
+        {
+            Console.WriteLine("hi");
+        }
+    }
+}
