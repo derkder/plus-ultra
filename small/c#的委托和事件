@@ -76,7 +76,7 @@ namespace Delegate
             heater.BoilEvent += alarm.MakeAlert; // 注册方法
             heater.BoilEvent += (new Alarm()).MakeAlert; // 给匿名对象注册方法
             heater.BoilEvent += Display.ShowMsg; // 注册静态方法
-            heater.BoilWater(); // 烧水，会自动调用注册过对象的方法
+            heater.BoilWater(); // 烧水，会自动调用注册过对象的方法;调用了上面加了很多的事件event
         }
     }
 }
