@@ -25,6 +25,7 @@ class Program
 
 event：
 感觉像是一个更好的delegate
+例子：我想用一堆temperature，每个执行很多函数-----》用event记载函数，在event括号中传入参数
 namespace Delegate
 {
     public class Heater
