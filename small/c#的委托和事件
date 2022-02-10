@@ -1,0 +1,84 @@
+委使用委托可以将多个方法绑定到同一个委托变量，当调用此变量时(这里用“调用”这个词，是因为此变量代表一个方法)，可以依次调用所有绑定的方法。
+public delegate void GreetingDelegate(string name);
+class Program
+{
+    private static void EnglishGreeting(string name)
+    {
+        Console.WriteLine("Good Morning, " + name);
+    }
+    private static void ChineseGreeting(string name)
+    {
+        Console.WriteLine("早上好, " + name);
+    }
+    private static void GreetPeople(string name, GreetingDelegate MakeGreeting)
+    {
+        MakeGreeting(name);
+    }
+    static void Main(string[] args)
+    {
+        GreetPeople("Liker", EnglishGreeting);
+        GreetPeople("李志中", ChineseGreeting);
+        Console.ReadLine();
+    }
+}
+
+
+event：
+感觉像是一个更好的delegate
+namespace Delegate
+{
+    public class Heater
+    {
+        private int temperature;
+
+        public delegate void BoilHandler(int param);
+
+        public event BoilHandler BoilEvent;
+
+        public void BoilWater()
+        {
+            for (int i = 0; i <= 100; i++)
+            {
+                temperature = i;
+                if (temperature > 95)
+                {
+                    if (BoilEvent != null)
+                    {
+                        BoilEvent(temperature); // 调用所有注册对象的方法
+                    }
+                }
+            }
+        }
+    }
+
+    public class Alarm
+    {
+        public void MakeAlert(int param)
+        {
+            Console.WriteLine("Alarm：嘀嘀嘀，水已经 {0} 度了：", param);
+        }
+    }
+
+    public class Display
+    {
+        public static void ShowMsg(int param) // 静态方法
+        {
+            Console.WriteLine("Display：水快烧开了，当前温度：{0}度。", param);
+        }
+    }
+
+    class Program
+    {
+        static void Main()
+        {
+            Heater heater = new Heater();
+            Alarm alarm = new Alarm();
+            heater.BoilEvent += alarm.MakeAlert; // 注册方法
+            heater.BoilEvent += (new Alarm()).MakeAlert; // 给匿名对象注册方法
+            heater.BoilEvent += Display.ShowMsg; // 注册静态方法
+            heater.BoilWater(); // 烧水，会自动调用注册过对象的方法
+        }
+    }
+}
+
+https://www.cnblogs.com/SkySoot/archive/2012/04/05/2433639.html
