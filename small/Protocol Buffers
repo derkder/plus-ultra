@@ -1,3 +1,48 @@
 https://developers.google.com/protocol-buffers/docs/overview
 C#之Message
 https://blog.csdn.net/caisini_vc/article/details/5599468
+
+octane:
+用于两头传数据，两头可能指客户端和服务器
+.proto文件里的message规定数据的格式
+
+传输的例子
+//.proto文件中
+message Order
+{undefined
+  required int32 time = 1;
+  required int32 userid = 2;
+  required float price = 3;
+  optional string desc = 4;
+}
+
+// 发送方
+
+Order order;
+order.set_time(XXXX);
+order.set_userid(123);
+order.set_price(100.0f);
+order.set_desc("a test order");
+
+string sOrder;
+order.SerailzeToString(&sOrder);
+
+// 然后调用某种socket的通讯库把序列化之后的字符串发送出去
+// ......
+
+// 接收方
+
+string sOrder;
+// 先通过网络通讯库接收到数据，存放到某字符串sOrder
+// ......
+
+Order order;
+if(order.ParseFromString(sOrder))  // 解析该字符串
+{undefined
+  cout << "userid:" << order.userid() << endl
+          << "desc:" << order.desc() << endl;
+}
+else
+{undefined
+  cerr << "parse error!" << endl;
+}
