@@ -1,0 +1,38 @@
+https://blog.csdn.net/qq_53558968/article/details/116886784
+多态：
+class Person //成人
+{
+  public:
+  virtual void fun()
+   {
+       cout << "全价票" << endl; //成人票全价
+   }
+};
+class Student : public Person //学生
+{
+   public:
+   virtual void fun() //子类完成对父类虚函数的重写
+   {
+       cout << "半价票" << endl;//学生票半价
+   }
+};
+void BuyTicket(Person* p)
+{
+   p->fun();
+}
+
+int main()
+{
+   Student st;
+   Person p;
+   BuyTicket(&st);//子类对象切片过去
+   BuyTicket(&p);//父类对象传地址
+}
+
+
+1 必须通过基类的指针或者引用调用虚函数（不能够调用对象）
+2 被调用的函数是虚函数，且必须完成对基类虚函数的重写
+
+
+虚函数：
+https://blog.csdn.net/haoel/article/details/1948051
