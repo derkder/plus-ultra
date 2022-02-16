@@ -1,0 +1,13 @@
+代表，属性xxx 可以 是获取或设置。
+如果是 仅是 set 则只能设置，反之亦然。
+老版本的.net framework 对于属性，不能省略，必须这样做：
+int adminID = 0;
+public AdminID
+{
+ get{return adminID;}
+ set{adminID=value;}
+}
+而现在的版本可以省略，仅仅需要:
+public AdminID{get;set;} 其代表的意义是一样的，就是定义类 Admin 的属性 AdminID
+
+https://allensu.blog.csdn.net/article/details/84064923
