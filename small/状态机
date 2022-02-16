@@ -1,4 +1,4 @@
-主角的一部分行为由状态机实现，比如建造和寻路，类是ActorStateMachine
+主角的一部分行为由状态机实现，比如建造和寻路，类是ActorStateMachine。定义状态机管理类ActorStateMachine，定义所有状态的基类ActorStateBase，其他的行为例如建造、寻路继承这个基类。
 
 一个健壮的状态机可以让你的程序，不论发生何种突发事件都不会突然进入一个不可预知的程序分支。
 
