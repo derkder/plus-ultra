@@ -1,4 +1,9 @@
 https://learnopengl-cn.github.io/intro/
+
+https://blog.csdn.net/xiangzhihong8/article/details/84776943
+//基础知识
+//纹理
+//光照和材质
 int main(int argc, const char* argv[]) {
     // 初始化显示模式
     glutInit(&argc, const_cast<char**>(argv));
@@ -17,3 +22,5 @@ int main(int argc, const char* argv[]) {
     glutMainLoop();
     return 0;
 }
+
+
