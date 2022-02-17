@@ -3,3 +3,105 @@
 如果一个类希望在调用别的类的方法下自己的方法又被调用，那么就实现这个接口进行声明，我认为就是起到声明的作用，同时方便我们面向接口编程。
 
 回调的作用：关于A中C调用B的C方法，而B中调用A中的D方法，将代码中的逻辑翻译为生活中的话语就是：A发完消息，B处理完告诉A结果
+
+
+
+
+
+
+第三章.幼师回来了
+发现小明完成了3位数的加法，老师觉得小明很聪明，是个可塑之才。于是又在黑板上写下了"26549+16387=",让小明上课之前完成填空，然后又回办公室了。
+小明看着小红再一次递上来的计算机，心生一计：让小红代劳。
+小明告诉小红题目是"26549+16487="，然后指出填写结果的具体位置，然后就出去快乐的玩耍了。
+这里，不把小红单独实现出来，而是把这个只能算加法的计算器和小红看成一个整体，一个会算结果还会填空的超级计算器。折这个超级计算器需要传的参数是两个加数和要填空的位置，而这些内容需要小明提前告知，也就是小明要把自己的一部分方法暴露给小红，最简单的方法就是把自己的引用和两个加数一块告诉小红。
+因此，超级计算器的add方法应该包含两个操作数和小明自身的引用，代码如下:
+
+public class SuperCalculator
+{
+	public void add(int a,int b,Student xiaoming)
+	{
+		int result=a+b;
+		xiaoming.fillBlank(a,b,result);
+	}
+}
+1
+2
+3
+4
+5
+6
+7
+8
+小明这边现在已经不需要心算，也不需要使用计算器，因此只需要有一个方法可以向小红寻求帮助就行了，代码如下:
+
+public class Student
+{
+	private String name=null;
+	public Student(String name)
+	{
+		this.name=name;
+	}
+	public void setName(String name)
+	{
+		this.name=name;
+	}
+	public void callHelp(int a,int b)
+	{
+		new SuperCalculator().add(a,b,this);
+	}
+	public void fillBlank(int a,int b,int result)
+	{
+		System.out.println(name+"求助小红计算:"+a+"+"+b+"="+result);
+	}
+}
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+测试代码如下:
+
+public class Test
+{
+	public static void main(String[] args)
+	{
+		int a=26549;
+		int b=16487;
+		Student s=new Student("小明");
+		s.callHelp(a,b);
+	}
+}
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+运行结果为:
+
+小明求助小红计算:26549+16487=43036
+
+执行流程为：小明通过自身的callHelp方法调用了小红(new SuperCalculator())的add方法，在调用的时候将自身的引用(this)当作参数一并传入，小红在使用计算器得出结果之后，回调了小明的fillBlank方法，将结果填在了黑板的空格上。
+
+到这里，回调功能就正式登场了，小明的fillBlank方法就是我们常说的回调函数。
+
+通过这种方式，可以明显的看出，对于完成老师的填空题这个问题上，小明已经不需要等待到加法做完且结果填写在黑板上才能去跟小伙伴撒欢了，填空这个工作由超级计算器小红来做了。回调的优势已经开始体现了。
