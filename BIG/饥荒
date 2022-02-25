@@ -1,0 +1,2 @@
+玩家：
+在hierarchy里创建一个空对象unitmanager交互单元管理器，然后给他绑cs脚本,然后里面生成各种各样的可交互object，包括玩家
