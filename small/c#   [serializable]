@@ -2,6 +2,8 @@ C#中Serializable序列化
 序列化是将对象转换为字节流以存储对象或将其传输到内存、数据库或文件的过程。它的主要目的是保存对象的状态，以便能够在需要时重新创建它。反向过程称为反序列化。
 https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/serialization/
 
+
+
 什么是序列化：
 当您在 .Net 框架应用程序中创建对象时，您无需考虑数据是如何存储在内存中的。因为 .Net 框架会为您处理这些问题。但是，如果要将对象的内容存储到文件中、
 将对象发送到另一个进程或通过网络传输，则必须考虑对象的表示方式，因为您需要转换为不同的格式.这种转换称为序列化。
@@ -12,3 +14,34 @@ https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/serial
 任何不将某些东西标记为可序列化的理由：
 传输或保存数据时，您只需发送或保存所需的数据。所以会有更少的传输延迟和存储问题。因此，您可以在序列化时选择退出不必要的数据块。
 https://stackoverflow.com/questions/5877808/what-is-serializable-and-when-should-i-use-it
+
+
+
+
+unity中的应用：
+Serialize序列化功能：
+Unity3D 中提供了非常方便的功能可以帮助用户将 成员变量 在Inspector中显示，并且定义Serialize关系；
+简单的说，在没有自定义Inspector的情况下所有显示在Inspector 中的属性都同时具有Serialize功能；
+换句话说，就是你在Inspector看到什么，保存游戏的时候，这些值就会被保存成二进制文件；
+Serializable :
+用于自定义的，非abstract的class、struct、enum、delegate进行序列化；
+SerializeField :
+用于非public（如私有变量、保护变量）序列化；
+//情况一：如果a是共有的序列化变量
+//（1）如果你想在面板中看到变量a,那么：
+public int a ;
+//（2）如果你不想在面板中看到变量a,那么：
+[HideInInspector] //表示将原本在面板中显示的变量隐藏起来。
+public int a ;    //a变量只能在代码中赋值，不能再面板中看到，也不能手动设置赋值。
+//情况二：如果a是私有的序列化变量
+//（1）如果你想在面板中看到变量a,那么：
+[SerializeField]
+private int a;
+//情况三：自定义一个单独的class/struct
+//（1）如果你想在面板中看到,那么：
+[System.Serializable]
+public class Func {
+    public int id = 1001;
+    public string name = "娃哈哈";
+}
+原文链接：https://blog.csdn.net/wxy15979115440/article/details/98629442
