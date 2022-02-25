@@ -1,0 +1,14 @@
+C#中Serializable序列化
+序列化是将对象转换为字节流以存储对象或将其传输到内存、数据库或文件的过程。它的主要目的是保存对象的状态，以便能够在需要时重新创建它。反向过程称为反序列化。
+https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/serialization/
+
+什么是序列化：
+当您在 .Net 框架应用程序中创建对象时，您无需考虑数据是如何存储在内存中的。因为 .Net 框架会为您处理这些问题。但是，如果要将对象的内容存储到文件中、
+将对象发送到另一个进程或通过网络传输，则必须考虑对象的表示方式，因为您需要转换为不同的格式.这种转换称为序列化。
+序列化的作用：
+序列化允许开发人员保存对象的状态并根据需要重新创建它，提供对象的存储以及数据交换。通过序列化，开发人员可以执行以下操作，例如通过 Web 服务将对象发送到远程应用程序、将对象从一个域传递到另一个域、将对象作为 XML 字符串通过防火墙传递，或者维护安全性或用户特定跨应用程序的信息。
+将 SerializableAttribute 应用于一个类型以指示该类型的实例可以被序列化。即使该类还实现了 ISerializable 接口来控制序列化过程，也应用 SerializableAttribute。
+一个类型中所有被 SerializableAttribute 标记的公共和私有字段都默认被序列化，除非该类型实现了 ISerializable 接口来覆盖序列化过程。默认序列化过程不包括用 NonSerializedAttribute 标记的字段。如果可序列化类型的字段包含特定于特定环境的指针、句柄或其他一些数据结构，并且无法在不同的环境中有意义地重构，那么您可能希望将 NonSerializedAttribute 应用于该字段。
+任何不将某些东西标记为可序列化的理由：
+传输或保存数据时，您只需发送或保存所需的数据。所以会有更少的传输延迟和存储问题。因此，您可以在序列化时选择退出不必要的数据块。
+https://stackoverflow.com/questions/5877808/what-is-serializable-and-when-should-i-use-it
