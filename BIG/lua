@@ -1,4 +1,4 @@
-table 
+一、table 
 Lua 中的表（table）其实是一个"关联数组"（associative arrays），数组的索引可以是数字或者是字符串。在 Lua 里，table 的创建是通过"构造表达式"来完成，最简单构造表达式是{}，用来创建一个空表。
 table表类型：
 表在 Lua 中是一个非常重要的数据结构，也是最有权力的。
@@ -11,52 +11,94 @@ table表类型：
 
 
 
-
-function函数
-
-function fact(n)
-	if n==1 then
-		return n;
-	else
-		return n*fact(n-1);
-	end
-end
-
-print(fact(3))
-print(fact(5))
-
-fact2 = fact
-print(fact2(5))
-//////
-function testFun(tab,fun)
-    for k ,v in pairs(tab) do
-        print(fun(k,v));
-    end
-end
-
-
-tab={key1="val1",key2="val2"};
-testFun(tab,
-function(key,val)--匿名函数
-    return key.."="..val;
-end
-);
-
-执行结果为：
-key1 = val1
-key2 = val2
-
-
-
-
-
-
-
-thread和userdata类型
+二、thread和userdata类型
 在 Lua 里，最主要的线程是协同程序（coroutine）。它跟线程（thread）差不多，拥有自己独立的栈、局部变量和指令指针，可以跟其他协同程序共享全局变量和其他大部分东西。
 线程跟协程的区别：线程可以同时多个运行，而协程任意时刻只能运行一个，并且处于运行状态的协程只有被挂起（suspend）时才会暂停。
 
 userdata 是一种用户自定义数据，用于表示一种由应用程序或 C/C++ 语言库所创建的类型，可以将任意 C/C++ 的任意数据类型的数据（通常是 struct 和 指针）存储到 Lua 变量中调用。
+
+
+
+三、function函数
+1、可变参数用。。。表示
+function average(...)
+	local arg = {...}
+	res = 0
+	for k,v in pairs(arg) do
+		res = res+v
+	end
+	-- #arg 取得参数的个数  	#"hello"
+	print(res/#arg)
+end
+
+average(10)
+average(1,30)
+average(3,8,90)
+average(5,67,7,8,3)
+
+2、local function max(num1,num2)
+	if(num1>num2)then
+		return num1
+	else
+		return num2
+	end
+end
+
+print( max(1,10) )
+
+--函数可以作为数据赋值   可以作为参数传递
+temp = max
+print(temp(40,3))
+-----
+myprint = function (param)
+	print("这个是我的打印函数"..param)
+end
+
+myprint(100)
+-----
+function add(num1,num2,printFun)
+	local res = num1+num2
+	printFun(res)
+end
+
+add(40,50,myprint)
+
+--lua里面的函数可以返回多个值
+
+
+
+
+四、模块（感觉像c++里的类）
+Lua 的模块是由变量、函数等已知元素组成的 table，因此创建一个模块很简单，就是创建一个 table，然后把需要导出的常量、函数放入其中，最后返回这个 table 。
+module = {}
+module.var = "Name"
+module.func1 = function ()
+	print("这个是Module里面的函数")
+end
+function module.func1()
+	print("这个是Module里面的函数")
+end
+local function func2()
+	print("这个是局部函数fun2")  --相当于一个私有函数 private
+end
+function module.func3()
+	func2()
+	print("这个是全局函数func3")
+end
+return module
+使用方法：
+--require "模块名"
+--require ("模块名")
+
+m = require "module"
+
+print(m.var)
+m.func1()
+m.func3()
+
+
+
+四、元表
 
 
 原文链接：https://blog.csdn.net/THIOUSTHIOUS/article/details/86552762
