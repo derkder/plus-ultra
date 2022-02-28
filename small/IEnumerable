@@ -1,0 +1,34 @@
+咋一看到IEnumerable这个接口，我们可能会觉得很神奇，在一般的编程时，基本上我们是想不到去用它的，可是，俗话说得好，存在便是道理，那么，它对我们来说，能够带来哪些奇妙的事情呢？
+要想弄懂它，我们还是看看其定义吧！
+在MSDN上，是这么说的，它是一个公开枚举数，该枚举数支持在非泛型集合上进行简单的迭代。换句话说，对于所有数组的遍历，都来自IEnumerable，那么我们就可以利用这个特性，来定义一个能够遍历数组的通用方法，这样看来，是不是很神奇呢？
+例如：
+        public static void Print(IEnumerable myList)
+        {
+            int i = 0;
+            foreach (Object obj in myList)
+            {
+                if (obj is Student)//这个是类型的判断，这里Student是一个类或结构
+                {
+                    Student s=(Student)obj;
+                    Console.WriteLine("\t[{0}]:\t{1}", i++, s.Sname);
+                }
+                if (obj is int)
+                {
+                    Console.WriteLine("INT:{0}",obj);
+                }
+            }
+            Console.WriteLine();
+        }
+上面，我们可以在foreach中进行多个if判断，来进行相应的操作。
+IEnumerable 的另一个用法是在泛型中的使用。其中用lamda表达式在数组中查询，具体例子如下：
+            List<string> fruits =
+                new List<string> { "apple", "passionfruit", "banana", "mango",
+                    "orange", "blueberry", "grape", "strawberry" };
+           // List<string> query = fruits.Where(fruit => fruit.Length < 6).ToList();
+            IEnumerable<string> query = fruits.Where(fruit => fruit.Length < 6);
+            foreach (string fruit in query)
+                Console.WriteLine(fruit);
+以上的两个例子呢，我觉得在平时编程中，还是会经常用到的，我们不妨试试。。。
+
+
+原文链接：https://blog.csdn.net/wolf_121/article/details/8219087
