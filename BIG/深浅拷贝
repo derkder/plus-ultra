@@ -8,3 +8,4 @@
 所以这两个空间指向的还是同一个地址（堆内存中的这个值）。
 
 原文链接：https://blog.csdn.net/weixin_43695464/article/details/104845131
+//但这篇文章是js语言的
