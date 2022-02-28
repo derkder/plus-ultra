@@ -1,0 +1,62 @@
+table 
+Lua 中的表（table）其实是一个"关联数组"（associative arrays），数组的索引可以是数字或者是字符串。在 Lua 里，table 的创建是通过"构造表达式"来完成，最简单构造表达式是{}，用来创建一个空表。
+table表类型：
+表在 Lua 中是一个非常重要的数据结构，也是最有权力的。
+1、我们可以使用表表示数组，集合，字典…
+2、Lua table 使用关联型数组，你可以用任意类型的值来作数组的索引，但这个值不能是 nil。
+3、Lua table 是不固定大小的，你可以根据自己需要进行扩容。
+4、表既不是值类型也不是变量，它是对象。
+5、Lua 也是通过 table 来解决模块（module）、包（package）和对象（Object）的。 例如 string.format 这里其实 string 并不是一个类。在 Lua 中没有类，Lua 中使用 table 实现类、面向对象这些概念。
+
+
+
+
+
+function函数
+
+function fact(n)
+	if n==1 then
+		return n;
+	else
+		return n*fact(n-1);
+	end
+end
+
+print(fact(3))
+print(fact(5))
+
+fact2 = fact
+print(fact2(5))
+//////
+function testFun(tab,fun)
+    for k ,v in pairs(tab) do
+        print(fun(k,v));
+    end
+end
+
+
+tab={key1="val1",key2="val2"};
+testFun(tab,
+function(key,val)--匿名函数
+    return key.."="..val;
+end
+);
+
+执行结果为：
+key1 = val1
+key2 = val2
+
+
+
+
+
+
+
+thread和userdata类型
+在 Lua 里，最主要的线程是协同程序（coroutine）。它跟线程（thread）差不多，拥有自己独立的栈、局部变量和指令指针，可以跟其他协同程序共享全局变量和其他大部分东西。
+线程跟协程的区别：线程可以同时多个运行，而协程任意时刻只能运行一个，并且处于运行状态的协程只有被挂起（suspend）时才会暂停。
+
+userdata 是一种用户自定义数据，用于表示一种由应用程序或 C/C++ 语言库所创建的类型，可以将任意 C/C++ 的任意数据类型的数据（通常是 struct 和 指针）存储到 Lua 变量中调用。
+
+
+原文链接：https://blog.csdn.net/THIOUSTHIOUS/article/details/86552762
