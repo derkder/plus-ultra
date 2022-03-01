@@ -6,3 +6,29 @@
 
 原文链接：https://blog.csdn.net/chengqiuming/article/details/80573288
 最清楚的博客：https://blog.csdn.net/daaikuaichuan/article/details/82951084
+
+
+unity:
+协程也被叫做轻量级线程。通俗点讲就是定义一大堆任务，然后通过一个线程轮着对每个任务都执行一下，协作运行。它的厉害之处在于每运行到一个任务的时候，它都可以从这个任务上一次中断的地方开始运行。
+
+
+四、Unity中使用Coroutine需要注意的问题：
+1.使用的地方和不能使用的地方：
+必须在MonoBehaviour或继承于MonoBehaviour的类中调用 yield coroutine。yield不可以在Update或者FixedUpdate里使用。
+2.开启协程：
+StartCoroutine(string methodName)和StartCoroutine(IEnumeratorroutine)都可以开启一个协程，
+区别：
+使用字符串作为参数时，开启协程时最多只能传递一个参数，并且性能消耗会更大一点; 而使用IEnumerator 作为参数则没有这个限制。
+3.删除协程：
+1).在Unity3D中，使用StopCoroutine(stringmethodName)来终止该MonoBehaviour指定方法名的一个协同程序，使用StopAllCoroutines()来终止所有该MonoBehaviour可以终止的协同程序。
+包括StartCoroutine(IEnumerator routine)的。
+2).还有一种方法可以终止协同程序，即将协同程序所在gameobject的active属性设置为false，当再次设置active为ture时，协同程序并不会再开启；
+如是将协同程序所在脚本的enabled设置为false则不会生效。
+4.js和C#中使用区别：
+在C#中要使用 yield return而不是yield。
+C#中yield（中断）语句必须要在IEnumerator类型里，C#方法的返回类型为IEnumerator，返回值如（eg:yield return new WaitForSeconds(2); 或者 yield returnnull);
+5.协程函数返回值和参数类型，组合的设计模式：
+协同程序的返回类型为Coroutine类型。在Unity3D中，Coroutine类继承于YieldInstruction，所以，协同程序的返回类型只能为null、等待的帧数(frame)以及等待的时间。
+协同程序的参数不能指定ref、out参数。但是，我们在使用WWW类时会经常使用到协同程序，由于在协同程序中不能传递参数地址(引用)，也不能输出对象，
+这使得每下载一个WWW对象都得重写一个协同程序，解决这个问题的方法是建立一个基于WWW的类（用组合模式来解决-其实就是不通过函数传参全局关联一个对象了），
+参考: https://blog.csdn.net/blues1021/article/details/40959915
