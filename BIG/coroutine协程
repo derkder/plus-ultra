@@ -52,6 +52,21 @@ C#中yield（中断）语句必须要在IEnumerator类型里，C#方法的返回
 
 该段代码的执行顺序是12435
 执行到4协程注册了事件，控制权交给外部线程；外部线程执行到3；事件发生，程序分段执行机制goto到协程处记录了堆栈信息执行5语句。
+IEnumerator Start()
+    {undefined
+       print("Starting " +Time.time);----------------------------------------1
+       yield return StartCoroutine(WaitAndPrint(2.0F));------------------------2
+       print("Done " +Time.time);------------------------------------------3
+    }
+   IEnumerator WaitAndPrint(float waitTime)
+    {undefined
+       yield return new WaitForSeconds(waitTime);----------------------------4
+       print("WaitAndPrint " + Time.time);-----------------------------------------5
+    }
+该段代码的执行顺序是12453
+Why?这么奇怪的执行方式。
+程序执行到4，执行yield return表达式注册事件交出控制权给外部，因为外部还要交出控制权也需要执行yield return后面的表达式语句因此会重入WaitAndPrint函数接着协程当前状态下一步执行所以执行到5，yield return 后面表达式语句执行完毕控制权完全交出，之后才执行3，根本原因是yield return 不能直接嵌套后面需要跟一个表达式（事件）。
+
 
 
 原文链接：https://blog.csdn.net/blues1021/article/details/40959915
