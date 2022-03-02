@@ -1,0 +1,21 @@
+什么是token：
+token的意思是“令牌”，是服务端生成的一串字符串，作为客户端进行请求的一个标识。
+当用户第一次登录后，服务器生成一个token并将此token返回给客户端，以后客户端只需带上这个token前来请求数据即可，无需再次带上用户名和密码。
+简单token的组成；uid(用户唯一的身份标识)、time(当前时间的时间戳)、sign（签名，token的前几位以哈希算法压缩成的一定长度的十六进制字符串。为防止token泄露）。
+
+2：token主要有两个作用：①：防止表单重复提交(防止表单重复提交一般还是使用前后端都限制的方式，比如：在前端点击提交之后，将按钮置为灰色，不可再次点击，然后客户端和服务端的token各自独立存储，客户端存储在Cookie或者Form的隐藏域（放在Form隐藏域中的时候，需要每个表单）中，服务端存储在Session（单机系统中可以使用）或者其他缓存系统（分布式系统可以使用）中。)
+//在页面初始化的时候调用后端代码像前端返回token
+public String initLogin(ModelMap model, HttpSession session, String loginUrl) {
+      model.put("extLoginView", clientManager.getExtLoginView());
+         // 生成token
+      String token = UUID.randomUUID().toString().substring(0,16);
+      model.put(LOGIN_TOKEN, token);
+    //返回地址与方法的  String loginUrl一致，即初始化的时候调用完方法后，又回到初始化页面
+return loginUrl;
+}
+②：用来作身份验证
+
+
+
+原文链接：https://blog.csdn.net/qq_32784541/article/details/79655146
+原文链接：https://blog.csdn.net/qq_45955475/article/details/109438364
