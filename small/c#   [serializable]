@@ -1,3 +1,7 @@
+总（看了小狗骑士）：不是继承monobehavior的类需要加个【serializable】
+
+
+
 C#中Serializable序列化
 序列化是将对象转换为字节流以存储对象或将其传输到内存、数据库或文件的过程。它的主要目的是保存对象的状态，以便能够在需要时重新创建它。反向过程称为反序列化。
 https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/serialization/
