@@ -32,3 +32,26 @@ C#中yield（中断）语句必须要在IEnumerator类型里，C#方法的返回
 协同程序的参数不能指定ref、out参数。但是，我们在使用WWW类时会经常使用到协同程序，由于在协同程序中不能传递参数地址(引用)，也不能输出对象，
 这使得每下载一个WWW对象都得重写一个协同程序，解决这个问题的方法是建立一个基于WWW的类（用组合模式来解决-其实就是不通过函数传参全局关联一个对象了），
 参考: https://blog.csdn.net/blues1021/article/details/40959915
+
+
+
+
+
+
+ voidStart()
+    {undefined
+       print("Starting " +Time.time);----------------------------------------1
+       StartCoroutine(WaitAndPrint(2));-------------------------------------2
+       print("Done " +Time.time);-------------------------------------------3
+    }
+   IEnumerator WaitAndPrint(float waitTime)
+    {undefined
+       yield return new WaitForSeconds(waitTime);------------------------4
+       print("WaitAndPrint " + Time.time);----------------------------------5
+    }
+
+该段代码的执行顺序是12435
+执行到4协程注册了事件，控制权交给外部线程；外部线程执行到3；事件发生，程序分段执行机制goto到协程处记录了堆栈信息执行5语句。
+
+
+原文链接：https://blog.csdn.net/blues1021/article/details/40959915
