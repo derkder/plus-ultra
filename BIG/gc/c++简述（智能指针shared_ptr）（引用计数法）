@@ -1,0 +1,39 @@
+C++中的GC（垃圾回收）
+
+简述
+网上有不少人认为，标准c++是没有GC的。实际上，为了运行效率的提高以及在嵌入式设备上运行，c++不提供语言层面的GC。
+但是，c++头文件memory提供了智能指针std::shared_ptr，作GC的用途。这使得我们可以决定哪些指针需要GC、哪些不需要，以免不必要的消耗。
+
+头文件
+要使用std::shared_ptr，需要引入头文件memory，如下：
+#include <memory>
+
+创建和使用
+我们可以直接把new获得的指针赋值给std::shared_ptr对象，或者把一个shared_ptr赋值给另一个shared_ptr：
+#include <memory>
+#include <iostream>
+class C{
+	~C() { std::cout << "destroyed\n" }
+};
+void test();
+void test(){
+	std::shared_ptr<C> ptr1 = new C;
+	std::shared_ptr<C> ptr2 = ptr1;
+}
+int main(){
+	test();
+	std::cin.get(); // 回车键退出
+}
+
+
+等到两个shared_ptr均失效，new获得的指针就会自动被释放。
+
+原理
+shared_ptr属于引用计数GC，管理的每一个指针都有一个计数器。每当有一个新的shared_ptr对象指向它，计数器就会加一。当计数器值为零时，就会被释放。
+
+局限
+不能释放循环引用，即A与B互相引用。
+
+
+
+原文链接：https://blog.csdn.net/qq_40165959/article/details/102526108
