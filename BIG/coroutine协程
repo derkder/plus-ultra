@@ -1,5 +1,5 @@
 协程不是进程，也不是线程，它就是一个函数，一个特殊的函数——可以在某个地方挂起，并且可以重新在挂起处继续运行。所以说，协程与进程、线程相比，不是一个维度的概念。
-一个进程可以包含多个线程，一个线程也可以包含多个协程，也就是说，一个线程内可以有多个那样的特殊函数在运行。但是有一点，必须明确，一个线程内的多个协程的运行是串行的。
+一个进程可以包含多个线程，一个线程也可以包含多个协程，也就是说，一个线程内可以有多个那样的特殊函数在运行。但是有一点，必须明确，一个线程内的多个协程的运行是串行的。（和线程不一样，线程就是异步的）
 如果有多核CPU的话，多个进程或一个进程内的多个线程是可以并行运行的，但是一个线程内的多个协程却绝对串行的，无论有多少个CPU（核）。这个比较好理解，毕竟协程虽然是一个特殊的函数，
 但仍然是一个函数。一个线程内可以运行多个函数，但是这些函数都是串行运行的。当一个协程运行时，其他协程必须挂起。
 
@@ -38,35 +38,34 @@ C#中yield（中断）语句必须要在IEnumerator类型里，C#方法的返回
 
 
 
- voidStart()
-    {undefined
-       print("Starting " +Time.time);----------------------------------------1
-       StartCoroutine(WaitAndPrint(2));-------------------------------------2
-       print("Done " +Time.time);-------------------------------------------3
-    }
-   IEnumerator WaitAndPrint(float waitTime)
-    {undefined
-       yield return new WaitForSeconds(waitTime);------------------------4
-       print("WaitAndPrint " + Time.time);----------------------------------5
-    }
-
-该段代码的执行顺序是12435
-执行到4协程注册了事件，控制权交给外部线程；外部线程执行到3；事件发生，程序分段执行机制goto到协程处记录了堆栈信息执行5语句。
-IEnumerator Start()
-    {undefined
-       print("Starting " +Time.time);----------------------------------------1
-       yield return StartCoroutine(WaitAndPrint(2.0F));------------------------2
-       print("Done " +Time.time);------------------------------------------3
-    }
-   IEnumerator WaitAndPrint(float waitTime)
-    {undefined
-       yield return new WaitForSeconds(waitTime);----------------------------4
-       print("WaitAndPrint " + Time.time);-----------------------------------------5
-    }
-该段代码的执行顺序是12453
-Why?这么奇怪的执行方式。
-程序执行到4，执行yield return表达式注册事件交出控制权给外部，因为外部还要交出控制权也需要执行yield return后面的表达式语句因此会重入WaitAndPrint函数接着协程当前状态下一步执行所以执行到5，yield return 后面表达式语句执行完毕控制权完全交出，之后才执行3，根本原因是yield return 不能直接嵌套后面需要跟一个表达式（事件）。
-
-
-
-原文链接：https://blog.csdn.net/blues1021/article/details/40959915
+ private void Start()
+{
+    Debug.Log("Start method");
+    StartCoroutine(TestCoroutine());
+    Debug.Log("Start method ends");
+}
+ 
+private IEnumerator TestCoroutine()
+{
+      Debug.Log("TestCoroutine");
+      while(true)
+      {
+           Debug.Log("HereW);
+           yield return null;
+           Debug.Log("There");
+      }
+}
+private void Update(){Debug.Log("Update");}
+It logs as:
+Start method
+TestCoroutine
+Here
+Start method ends
+Update
+There
+Here
+Update
+There
+Here
+…
+https://unitygem.wordpress.com/2016/01/27/coroutine/
