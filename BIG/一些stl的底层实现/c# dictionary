@@ -1,0 +1,33 @@
+1. Entry结构体首先我们引入Entry这样一个结构体，它的定义如下代码所示。这是Dictionary种存放数据的最小单位，调用Add(Key,Value)方法添加的元素都会被封装在这样的一个结构体中。        
+private struct Entry {
+            public int hashCode;    // Lower 31 bits of hash code, -1 if unused
+            public int next;        // Index of next entry, -1 if last
+            public TKey key;        // Key of entry
+            public TValue value;    // Value of entry
+        }
+
+
+2. 其它关键私有变量
+private int[] buckets; // Hash桶
+private Entry[] entries; // Entry数组，存放元素
+private int count; // 当前entries的index位置
+private int version; // 当前版本，防止迭代过程中集合被更改
+private int freeList; // 被删除Entry在entries中的下标index，这个位置是空闲的
+private int freeCount; // 有多少个被删除的Entry，有多少个空闲的位置
+private IEqualityComparer<TKey> comparer; // 比较器
+private KeyCollection keys; // 存放Key的集合
+private ValueCollection values; // 存放Value的集合
+
+
+3. Dictionary的构造
+初始化一个this.buckets = new int[prime]
+初始化一个this.entries = new Entry<TKey, TValue>[prime]
+Bucket和entries的容量都为大于字典容量的一个最小的质数其中this.buckets主要用来进行Hash碰撞，this.entries用来存储字典的内容，并且标识下一个元素的位置。
+
+
+！！！！！其中this.buckets主要用来进行Hash碰撞，this.entries用来存储字典的内容，并且标识下一个元素的位置。
+
+
+
+链接：https://zhuanlan.zhihu.com/p/96633352
+来源：知乎
