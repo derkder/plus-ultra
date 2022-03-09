@@ -27,7 +27,7 @@ Bucket和entries的容量都为大于字典容量的一个最小的质数其中t
 
 ！！！！！其中this.buckets主要用来进行Hash碰撞，this.entries用来存储字典的内容，并且标识下一个元素的位置。
 
-
+删除操作有一个对于freelist（int）的改变
 
 链接：https://zhuanlan.zhihu.com/p/96633352
 来源：知乎
