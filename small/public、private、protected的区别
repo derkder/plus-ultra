@@ -4,3 +4,6 @@
 
 2.类的另一个特征就是继承，protected的作用就是实现这一目的。所以：
 protected成员可以被派生类对象访问，不能被用户代码（类外）访问。
+
+
+https://blog.csdn.net/u012677715/article/details/79419872
