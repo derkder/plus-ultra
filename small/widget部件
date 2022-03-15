@@ -1,0 +1,17 @@
+感觉就是指这些：
+QPushButton：按钮
+QRadioButton：单选框
+QCheckBox：多选框
+QListWidget:列表部件
+QTableWidget：表格组件
+QGroupBox: 组框
+QStackedWidget：堆栈窗体
+QWidget:基础窗口部件
+QComboBox：组合框
+QLineEdit：单行文本框
+QTextEdit：多行文本框
+QTimeEdit：时间编辑框
+QSpinBox：微调框
+QSlider：滑动条
+QLabel：标签	
+QProgressBar：进度条
