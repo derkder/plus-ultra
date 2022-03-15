@@ -1,0 +1,4 @@
+顺序队列：
+入队 rear += 1
+出队 front += 1
+队列长度 = rear - front
