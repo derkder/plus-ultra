@@ -1,5 +1,6 @@
-1、public：public表明该数据成员、成员函数是对所有用户开放的，所有用户都可以直接进行调用
+1.类的一个特征就是封装，public和private作用就是实现这一目的。所以：
+用户代码（类外）可以访问public成员而不能访问private成员；private成员只能由类成员（类内）和友元访问。
 
-2、private：private表示私有，私有的意思就是除了class自己之外，任何人都不可以直接使用。
 
-3、protected：protected对于子女、朋友来说，就是public的，可以自由使用，没有任何限制，而对于其他的外部class，    protected就变成private。
+2.类的另一个特征就是继承，protected的作用就是实现这一目的。所以：
+protected成员可以被派生类对象访问，不能被用户代码（类外）访问。
