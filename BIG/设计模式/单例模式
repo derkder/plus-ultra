@@ -3,3 +3,15 @@
 适用性：
 当类只能有一个实例而且客户可以从一个访问点访问它时。
 当这个实例应该通过子类化可扩展的，并且客户无须更改代码就能使用拓展的实例。
+
+
+
+1 单例模式的应用场景
+在使用 Unity 开发游戏的时候，经常会需要各种 Manager 类用于管理一些全局的变量和方法，例如最常见的 GameManager 用于记录各种需要在整个游戏过程中持久化的数据。本文以 GameManager 为例，假设我们有以下几个需求：
+
+整个游戏过程中必须有且只有一个 GameManager
+在 GameManager 里会记录一个叫 Value 的整型变量
+切换游戏场景的时候 GameManager 不能被销毁
+有两个游戏场景分别叫 FirstScene 和 SecondScene
+每一个场景中都会有一个按钮，点击后会跳转到另一场景，并且对 GameManager.Value 进行 +1 操作
+每一个场景中都会显示当前 GameManager.Value 的值
