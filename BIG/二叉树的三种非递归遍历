@@ -1,0 +1,68 @@
+先序遍历
+先序遍历与中序、后序遍历都使用了栈结构来暂存节点
+void pre_traversal(BinaryTreeNode* root) {
+	std::stack<BinaryTreeNode*> node_stack;       //用来暂存节点的栈
+	while (root != nullptr || !node_stack.empty()) {
+		if (root != nullptr) {                     //若当前的节点非空，
+			std::cout << root->val << " ";         //则输出该节点的值
+			node_stack.push(root);                 //该节点压入栈中。
+			root = root->leftchild;                // 我们继续向左子树前进
+		}
+		else {
+			root = node_stack.top();                
+			node_stack.pop();
+			root = root->rightchild;
+		}
+ 
+	}
+ 
+}
+
+
+中序遍历
+与先序遍历类似，唯一区别是到达当前节点时  并不直接输出该节点。
+void in_traversal(BinaryTreeNode* root) {
+	std::stack<BinaryTreeNode*> stack_node;
+	while (root != nullptr || !stack_node.empty()) {
+		if (root != nullptr) {
+			stack_node.push(root);
+			root = root->leftchild;
+		}
+		else {
+			root = stack_node.top();
+			std::cout << root->val << " ";
+			stack_node.pop();
+			root = root->rightchild;
+		}
+	}
+}
+
+
+
+后序遍历
+与先序、中序遍历有所不同，后序遍历在决定是否可以输出当前节点的值的时候，需要考虑其左右子树是否都已经遍历完成。
+因此我们需要设置一个lastvisit游标。若lastvisit等于当前考查节点的右子树，表示该节点的左右子树都已经遍历完成，则可以输出当前节点（否则，继续向右子树进发）。并把lastvisit节点设置成当前节点，将当前游标节点root设置为空，下一轮就可以访问栈顶元素。
+void post_traversal(BinaryTreeNode* root) {
+	std::stack<BinaryTreeNode*> stack_node;
+	BinaryTreeNode* lastvisit = root;
+	while (root != nullptr || !stack_node.empty()) {
+		if (root != nullptr) {
+			stack_node.push(root);
+			root = root->leftchild;
+		}
+		else {
+			root = stack_node.top();
+			if (root->rightchild == nullptr || root->rightchild == lastvisit) {//！！！！！
+				std::cout << root->val << " ";
+				stack_node.pop();
+			    lastvisit = root;//！！！！！只有这里设置了lastvisit
+				root = nullptr;
+			}
+			else {
+				root = root->rightchild;
+			}
+			
+		}
+	}
+ 
+}
