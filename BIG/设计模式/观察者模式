@@ -1,0 +1,20 @@
+观察者模式是一种一对多的定义关系，让多个观察者对象同时监听一个主要对象，当这个主要对象发生变化时，会通知所有的观察者对象，使其发生相应的改变。
+比较经典的例子为C#种的猫叫了，老鼠跑了，主人醒了。
+所运用的关键字delegate  event（c#中，观察者模式就是这样子的）
+
+
+
+
+打个在游戏具体场景的例子，当游戏结束时，需要弹出视频广告，并且显示结算界面UI
+	void Start () {
+ 
+        GameController.Instance.myEvent += Ads.instance.Show;
+        GameController.Instance.myEvent += UIPanel.instance.GameEndPanel;
+ 
+        GameController.Instance.GameOver();
+	}
+  
+  
+  把观察者（Ads.instance.Show、UIPanel.instance.GameEndPanel）都放到gamecontroller的myEvent里，gamecontroller发生gameover，这两个观察者就能观察到然后执行函数
+
+  https://blog.csdn.net/huangzhenxun/article/details/84303454
