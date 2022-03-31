@@ -10,3 +10,9 @@ System.Object obj=i;
 int j=(int)obj;
 这个过程前2句是将i装箱，后一句是将obj拆箱！
 https://blog.csdn.net/weiker12/article/details/12747629
+
+
+首先我们要知道的是object类型属于引用类型,int 类型属于值类型(不知道的同 学自己抓紧背)
+这里呢就是把object类型(引用类型)的c强制转化为了int类型(值类型)的d这种称为装箱,
+相反的 object a =“2”; int b=a; 这里就是把object类型的a 转化为int 类型的b, 而 这里就是所谓的拆箱.
+而我们在日常开发的过程中尽量避免使用拆箱装箱操作
