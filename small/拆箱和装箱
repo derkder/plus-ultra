@@ -1,0 +1,12 @@
+1.装箱指的是把值类型转化为引用类型
+2.拆箱当然指的就是把引用类型转化为值类型
+装箱就是隐式的将一个值型转换为引用型对象。比如：
+int i=0;
+Syste.Object obj=i;
+这个过程就是装箱！就是将i装箱！
+拆箱就是将一个引用型对象转换成任意值型！比如：
+int i=0;
+System.Object obj=i;
+int j=(int)obj;
+这个过程前2句是将i装箱，后一句是将obj拆箱！
+https://blog.csdn.net/weiker12/article/details/12747629
