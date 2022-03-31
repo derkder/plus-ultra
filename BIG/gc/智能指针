@@ -18,3 +18,9 @@
 (4) auto_ptr 
        auto_ptr不支持拷贝和赋值操作，不能用在STL标准容器中。STL容器中的元素经常要支持拷贝、赋值操作，在这过程中auto_ptr会传递所有权，auto_ptr采用的是独享所有权语义，一个非空的unique_ptr总是拥有它所指向的资源。转移一个auto_ptr将会把所有权全部从源指针转移给目标指针，源指针被置空。
 智能指针代码实现： 用两个类来实现智能指针的功能，一个是引用计数类，另一个则是指针类。
+
+
+
+
+
+https://blog.csdn.net/lizhentao0707/article/details/81156384
