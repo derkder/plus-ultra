@@ -41,7 +41,8 @@ void in_traversal(BinaryTreeNode* root) {
 
 后序遍历
 与先序、中序遍历有所不同，后序遍历在决定是否可以输出当前节点的值的时候，需要考虑其左右子树是否都已经遍历完成。
-因此我们需要设置一个lastvisit游标。若lastvisit等于当前考查节点的右子树，表示该节点的左右子树都已经遍历完成，则可以输出当前节点（否则，继续向右子树进发）。并把lastvisit节点设置成当前节点，将当前游标节点root设置为空，下一轮就可以访问栈顶元素。
+因此我们需要设置一个lastvisit游标。若lastvisit等于当前考查节点的右子树，表示该节点的左右子树都已经遍历完成，则可以输出当前节点（否则，继续向右子树进发）。
+并把lastvisit节点设置成当前节点，将当前游标节点root设置为空，下一轮就可以访问栈顶元素。
 void post_traversal(BinaryTreeNode* root) {
 	std::stack<BinaryTreeNode*> stack_node;
 	BinaryTreeNode* lastvisit = root;
