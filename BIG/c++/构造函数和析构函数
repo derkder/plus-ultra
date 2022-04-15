@@ -29,3 +29,19 @@ class Test
   {
   }
 }
+其中，像下面的delete this 指针会导致死循环，因为
+class A
+{
+public:
+	A()
+	{
+		cout<<"A()"<<endl;
+	}
+	~A()
+	{
+		cout<<"~A()"<<endl;
+		delete this;
+	}
+};
+在析构函数中调用delete this: 上面这段程序的delete this会先调用 ~ A() 函数，然后再释放空间，这样每次调用delete都会调用~ A()，而~ A() 又要调用delete，他们相互调用，就会形成死循环。
+在成员函数中调用delete this: 首先会调用类的析构函数，this指针已删除，会出现指针错误。
