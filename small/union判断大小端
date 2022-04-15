@@ -1,0 +1,10 @@
+typedef union u
+{
+   int i;
+   char c;
+}u;
+int check_sys()
+{
+  u.i = 1;
+  return u.c;//返回1，表示小端；返回0，表示大端
+}
