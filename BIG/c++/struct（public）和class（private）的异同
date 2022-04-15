@@ -1,0 +1,8 @@
+struct 中默认的访问级别是 public，默认的继承级别也是 public；class 中默认的访问级别是 private，默认的继承级别也是 private。
+
+
+class 继承 struct 或者 struct 继承 class 时，默认级别取决于派生类的默认级别
+struct b{};
+class a ：b{}; a 的默认级别是private， 所以b的默认继承级别为private
+struct c ：a{}; c 的默认级别是public， 所以a的默认继承级别为public
+
