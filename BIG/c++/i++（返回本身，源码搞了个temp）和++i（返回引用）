@@ -1,0 +1,20 @@
+i++是返回int型的对象本身，此时的temp是记录了自增之前的值，而++i是返回int型对象的引用，引用是对象的别名，所以返回的是自增之后的值。
+
+
+
+
+
+//i++实现代码为：
+int operator++(int)
+{
+    int temp = *this;
+    ++*this;
+    return temp;
+}//返回一个int型的对象本身
+ 
+// ++i实现代码为：
+int& operator++()
+{
+    *this += 1;
+    return *this;
+}//返回一个int型的对象引用
