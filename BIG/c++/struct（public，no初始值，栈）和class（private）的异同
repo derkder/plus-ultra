@@ -1,0 +1,11 @@
+1、struct 中默认的访问级别是 public，默认的继承级别也是 public；class 中默认的访问级别是 private，默认的继承级别也是 private。
+2.结构不能够有初始值，类可以有初始值
+4.结构在栈中，类在堆中（maybr）
+3.构造方法在类里面名字和类相同且没有返回类型
+构造方法在结构里面不能定义无参的构造函数，且对结构体里面所有的属性赋值
+
+class 继承 struct 或者 struct 继承 class 时，默认级别取决于派生类的默认级别
+struct b{};
+class a ：b{}; a 的默认级别是private， 所以b的默认继承级别为private
+struct c ：a{}; c 的默认级别是public， 所以a的默认继承级别为public
+
