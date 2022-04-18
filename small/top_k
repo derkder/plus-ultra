@@ -1,1 +1,3 @@
 https://mp.weixin.qq.com/s/FFsvWXiaZK96PtUg-mmtEw
+三、堆
+其中，主要思想就是暂时的十个最大的数不用知道顺序，只要排成小顶堆，要那个顶上的代表这十个里面最小的就可以
