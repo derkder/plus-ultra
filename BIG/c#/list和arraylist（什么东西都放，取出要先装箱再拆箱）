@@ -1,0 +1,6 @@
+List和ArrayList的区别
+1.list性能较高,ArrayList性能较低
+2.list一次存储中只能存储泛型中的类型,ArrayList在一次存储中任何类型的数据
+3.List中获取值取出的是泛型中发的类型,因为ArrayList对元素没有限制,系统会将中获取的值当object类型的数据, 如果想获取到其中的内容需要进行装箱成object再拆箱
+4. List在使用时候需要导入的using指令为using System.Collections.Generic; ArrayList在使用的时候需要导入的using指令为using System.Collections;
+5.List属于泛型集合 ArrayList属于非泛型集合
