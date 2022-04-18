@@ -1,0 +1,14 @@
+1，const_cast
+这个操作符可以去掉变量const属性或者volatile属性的转换符，这样就可以更改const变量了。
+
+2，static_cast
+static_cast 这个操作符相当于C语言中的强制类型转换的替代品。多用于非多态类型的转换，比如说将int转化为double。但是不可以将两个无关的类型互相转化。（在编译时期进行转换）
+
+3，dynamic_cast
+dynamic_cast操作符 可以安全的将父类转化为子类，子类转化为父类都是安全的。所以你可以用于安全的将基类转化为继承类，而且可以知道是否成功，如果强制转换的是指针类型，失败会返回NULL指针，如果强制转化的是引用类型，失败会抛出异常。
+
+4，reinterpret_cast
+dynamic_cast 转换符只能用于含有虚函数的类。
+reinterpret_cast用在任意指针（或引用）类型之间的转换；以及指针与足够大的整数类型之间的转换；从整数类型（包括枚举类型）到指针类型，无视大小。
+需要注意的是：reinterpret_cast<xx>(yyy)，xx与yyy必须有一个值为指针类型。
+当static_cast转换不被编译器允许时，在你真的确保转换是可以安全转换时，你可以使用reinterpret_cast
