@@ -1,0 +1,3 @@
+Cache miss：
+CPU要访问的数据在Cache中有缓存，称为“命中” (Hit)，反之则称为“缺失” (Miss)。
+所以cachemiss也分L1 cache miss，L2 cache miss
