@@ -1,0 +1,67 @@
+表面上看：模板与多态本身就是两个东西。模板实例化是发生在编译期(Compile-time)的，而多态中的函数调用决议是发生在运行时(Run-time)。
+实际上：模板是静多态，模板是在编译时确定的，而平时我们说的多态是动多态，是在运行时确定。也就是多态分为两种：静多态和动多态。
+
+其实可以很简便的理解为：模板是“多对一”，多态是“一对多”。
+用函数来举例：
+“多对一”：无论参数是什么类型，这个函数都使用
+“一对多”：每个类型的实例都需要自己去实现虚函数，借由虚函数列表，多态会自动找到对应的同名函数并调用。
+
+
+
+
+
+
+模板：创建类或者函数的蓝图或者公式，分为函数模板和类模板。
+实现方式：template <typename T, typename U, ...>
+
+函数模板：通过定义一个函数模板，可以避免为每一种类型定义一个新函数。
+对于函数模板而言，模板类型参数可以用来指定返回类型或函数的参数类型，以及在函数体内用于变量声明或类型转换。
+函数模板实例化：当调用一个模板时，编译器用函数实参来推断模板实参，从而使用实参的类型来确定绑定到模板参数的类型。
+#include<iostream>
+
+using namespace std;
+
+template <typename T>
+T add_fun(const T & tmp1, const T & tmp2){
+    return tmp1 + tmp2;
+}
+
+int main(){
+    int var1, var2;
+    cin >> var1 >> var2;
+    cout << add_fun(var1, var2);
+
+    double var3, var4;
+    cin >> var3 >> var4;
+    cout << add_fun(var3, var4);
+    return 0;
+}
+
+类模板：类似函数模板，类模板以关键字 template 开始，后跟模板参数列表。但是，编译器不能为类模板推断模板参数类型，需要在使用该类模板时，在模板名后面的尖括号中指明类型。
+#include <iostream>
+using namespace std;
+template <typename T>
+class Complex
+{
+public:
+    //构造函数
+    Complex(T a, T b)
+    {
+        this->a = a;
+        this->b = b;
+    }
+    //运算符重载
+    Complex<T> operator+(Complex &c)
+    {
+        Complex<T> tmp(this->a + c.a, this->b + c.b);
+        cout << tmp.a << " " << tmp.b << endl;
+        return tmp;
+    }
+private:
+    T a;
+    T b;
+};
+int main()
+{
+    Complex<int> a(10, 20);
+
