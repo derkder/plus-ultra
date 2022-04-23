@@ -1,0 +1,12 @@
+
+
+
+
+
+
+
+
+
+解决方法：
+利用了后置++操作符的特性，在erase操作之前，迭代器已经指向了下一个元素。
+https://blog.csdn.net/weixin_39586265/article/details/112934388
