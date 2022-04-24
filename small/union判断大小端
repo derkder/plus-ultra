@@ -6,5 +6,5 @@ typedef union u
 int check_sys()
 {
   u.i = 1;
-  return u.c;//返回1，表示小端；返回0，表示大端
+  return u.c;//返回1，表示小端；返回0，表示大端（有效数据在地址大的地方是为大端大概）
 }
