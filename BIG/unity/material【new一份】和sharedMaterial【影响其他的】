@@ -1,0 +1,2 @@
+   使用material属性的时候，每次都会new一份新的material作用与它，但不会改变本地工程中的材质material；sharedMaterial是共享材质，
+   无论使用多少次，内存中都只会占用一份内存，但是会影响其他使用同一材质球的对象
