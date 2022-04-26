@@ -1,0 +1,14 @@
+https://blog.csdn.net/mecephy/article/details/52916954
+
+float newtonIterationMethod(float n, float err)
+{
+    float x = n;
+    float temp = x;
+    do
+    {
+        temp = x;
+        x = (x + n / x) / 2.0;
+
+    }while(fabs(x * x - n) > err);
+    return x;
+}
