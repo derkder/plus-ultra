@@ -1,0 +1,20 @@
+定义了两个类 Parent、Child，在两个类中分别定义另一个类的对象的共享指针，由于在程序结束后，两个指针相互指向对方的内存空间，导致内存无法释放
+class Parent {
+private:
+    shared_ptr<Child> ChildPtr;
+public:
+};
+
+class Child {
+private:
+    shared_ptr<Parent> ParentPtr;
+public:
+};
+
+
+
+
+
+解决方法：
+令环中的指针之一为弱指针
+weak_ptr只能拥有shared_ptr的观测权，没有使用权，想要使用的时候，就将weak_ptr转为shared_ptr，这个时候新产生的shared_ptr对象是不会引起循环引用的问题，因为它在它的作用域结束后肯定要释放的，和weak_ptr所在的类对象没有任何关系了。
