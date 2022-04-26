@@ -41,3 +41,36 @@ https://blog.csdn.net/fangyuwuzhu/article/details/107831052
 
 
 
+
+
+/**
+ * 单例模式：懒汉式（线程安全的）
+ */
+public class Test03 {
+    private Test03(){}
+    private static volatile Test03 instance=null;没有先创建好
+    public static Test03 getTest03(){
+        if(instance==null){
+            synchronized (Test03.class){
+                if (instance==null){
+                    instance=new Test03();
+                }
+            }
+        }
+        return instance;
+    }
+}
+/**
+ * 单例模式：饿汉式（线程安全）
+ */
+public class Test01 {
+ 
+    private Test01(){}
+    private static Test01 instance =new Test01();//先创建好
+    public static Test01 getTest01(){
+        return instance;
+    }
+}
+
+
+
