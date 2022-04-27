@@ -4,6 +4,7 @@ Screen Space -OverLay（覆盖模式）：
 
 Screen Space-Camera（相机模式）：
 这就是专门用来渲染UI的相机模式，如果你想要同时把3D物体和UI都能够显示出来，并且UI没有挡住3D物体，那就用这个模式，这个模式下相机只渲染UI并且相机是透视相机（Perspective）有近大远小的效果。
+UI 上显示 3D 模型的需求，比如很多 MMO 游戏中的查看人物装备的界面
 
 World Space（世界空间模式）：
 使用这个模式后，画布就会成为类似于Plane一样的物体。
