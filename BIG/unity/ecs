@@ -1,0 +1,6 @@
+ECS架构概述：
+ECS术语
+实体Entity：像容器一样
+组件数据Component Data：要存储在实体中的数据（不包括处理）
+组件系统ComponentSystem：处理
+组Group：组件系统运行所需的ComponentData列表
