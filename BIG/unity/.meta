@@ -1,0 +1,21 @@
+当我们把新的资源导入Unity时，Unity会自动做下面这件事：
+1.分配唯一ID
+2.创建.meta文件
+3.处理资源
+
+
+
+
+
+meta文件一般包含了一下内容（id和导入设置的数据）
+1、guid：	上面我们说Unity会分配一个唯一ID，就是存放在这里
+2、MonoImporter：	根据不同的文件类型，它的数据是不同的ImprotSetting数据，比如Mode Improter，Audio Improter等等，对照Inspector面板就可以看懂每行数据
+
+注意：.meta文件必须与各自的资源文件相匹配，如果在Unity窗口中移动或重命名资源，Unity也会自动移动或重命名相应的.meta文件，如果在Unity之外移动或重命名资源文件，
+则必须移动或重命名.meta，否则Unity会重新生成一个.meta文件，并删除旧的.meta文件。当.meta文件发生改变后，任何引用该资源的游戏对象或预制体，将会丢失对该资源的引用，
+因为Unity会重新生成一个唯一ID。（比如上传SVN时，一定要注意上传.meta文件）
+
+
+
+
+https://blog.csdn.net/qq_18192161/article/details/85110640
