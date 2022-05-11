@@ -21,3 +21,16 @@
 客户端根据服务器发来的信息删除特效，被打到的人减少血量播放收击特效
 
 https://blog.csdn.net/choudan8888/article/details/118414664
+
+
+
+
+
+
+
+
+
+四、帧同步的实现
+帧同步的两种实现方式：
+第一种：客户端插帧，第二种服务器插帧。
+https://blog.csdn.net/weixin_33671935/article/details/85940858
