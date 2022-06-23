@@ -3,6 +3,38 @@
 function  class:func2( )  end
 function  class.func1(self)  end
 --这时候这两个函数等价
+
+function MainScene:ctor()
+    self:ceshi(1,2,3)
+end
+function MainScene:ceshi(a,b,c)
+    print(a,b,c)
+end
+输出:1 2 3
+
+function MainScene:ctor()
+    self:ceshi(1,2,3)
+end
+function MainScene.ceshi(a,b,c)  --注意是.
+    print(a,b,c)
+end
+输出:userdata 1 2
+调用ceshi函数时用的：默认传递self为第一个参数，但是函数声明的时候用的 . 所以不会有默认隐藏的self去接收，此时传递参数为 self 1 2 3 但是ceshi函数只接收3个参数所以3被抛弃。
   
+function MainScene:ctor()
+    self.ceshi(1,2,3) --注意是.
+end
+
+function MainScene:ceshi(a,b,c)
+    print(self)
+    print(a,b,c)
+end
+输出：1
+     2 3 nil
+分析：函数调用时用的 . 不会传递self 只传递1 2 3，而ceshi函数声明时用的 ： 默认有一个self在第一位去接收，ceshi函数能接收4个参数，即 self a b c ，所以c没有接收参数为nil。
+
+在lua中模拟面向对象编程中，可以用 . 来表示类方法，而 ： 可以用来表示成员方法。
+
+
 
 https://blog.csdn.net/daimou123/article/details/50689623
