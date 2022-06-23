@@ -1,0 +1,8 @@
+首先在lua中使用“:”定义的函数会自动传入一个名为self的变量，这个变量是隐含的，self同c++中的this一样，表示当前对象的指针：而“.”定义的函数中没有self。
+
+function  class:func2( )  end
+function  class.func1(self)  end
+--这时候这两个函数等价
+  
+
+https://blog.csdn.net/daimou123/article/details/50689623
