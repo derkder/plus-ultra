@@ -1,6 +1,18 @@
 ECS架构概述：
 ECS术语
-实体Entity：像容器一样
-组件数据Component Data：要存储在实体中的数据（不包括处理）
-组件系统ComponentSystem：处理
-组Group：组件系统运行所需的ComponentData列表
+游戏里任何对象都可以抽象成 Entity ，我们也可以理解的 Entity=游戏对象
+举个例子：一个技能实体算是Entity、一个特效实体、一个玩家实体等等。
+
+游戏对象上的任何一个数据，就是一个Component，可以理解为 Component=对象的具体数据
+举个例子：一个玩家的Entity上面有坐标信息，那么就是一个PositionCompoent，还有模型信息，那么就是一个ModelComponent
+这个不包含任何方法，只是单纯的存储数据
+
+管理游戏对象上的数据，就是一个System，可以理解为 System=具体逻辑
+举个例子：对于玩家实体，我们想修改玩家的坐标，那么就需要一个MoveSystem，操作PositionComponent
+
+
+官方插件：https://github.com/sschmid/Entitas-CSharp
+其实ECS只是一种思想，并不依赖于任何插件，你只需要：
+1.实现一个 IComponent 接口
+2.实现一个 Entity 基类，实现 Get/Add/HasCompoent 等相关方法
+3.实现一个 System 基类，获取相关的 Component 进行处理
