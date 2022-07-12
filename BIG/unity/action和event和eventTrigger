@@ -1,0 +1,6 @@
+可能对：https://blog.csdn.net/zwlstc/article/details/84801147
+UnityAction是 void的带一个参数的委托
+
+UnityEvent是对UnityAction的封装  Addlistener相当于+=   Remove相当于-=
+
+EventTrigger是一个实现了所有点击拖拽等等接口的组件，添加了他就等于实现了所有接口。
