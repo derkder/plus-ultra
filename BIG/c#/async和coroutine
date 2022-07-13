@@ -1,4 +1,24 @@
 https://www.linkedin.com/pulse/unity-async-vs-coroutine-jo%C3%A3o-borks
+一、
+异步会带来更多内存分配上的垃圾
+协程因为是unity发明的貌似，所以一定要跟随monobehavior，异步不需要
+异步比协程更好控制
 
 
-unitask
+二、
+在以下情况下首选异步：
+需要最终确定
+需要多个等待条件
+需要返回值
+执行 IO 操作
+执行多线程操作
+
+在以下情况下首选协程：
+需要与 Unity 的时间系统或物理同步
+处理异步操作（场景管理/Web 请求）
+火与忘
+
+
+三、
+unitask：异步和协程的孩子
+完全不产生任何内存垃圾的异步
