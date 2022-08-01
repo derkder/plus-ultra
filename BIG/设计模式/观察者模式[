@@ -18,3 +18,10 @@
   把观察者（Ads.instance.Show、UIPanel.instance.GameEndPanel）都放到gamecontroller的myEvent里，gamecontroller发生gameover，这两个观察者就能观察到然后执行函数
 
   https://blog.csdn.net/huangzhenxun/article/details/84303454
+
+
+
+
+解耦：
+耦合是指两个或两个以上的体系或两种运动形式间通过相互作用而彼此影响以至联合起来的现象。
+解耦就是接触耦合
