@@ -2,5 +2,7 @@ pairs迭代映射+数组，能返回表中所有的键值对但是无序
 Ipairs迭代的是数组，遇到空值会停止，但是输出的是有序的
 
 
+也就是::如果是数组结构，用 ipairs 方法；如果是键值对结构，用 pairs 方法
+
 https://blog.csdn.net/cooclc/article/details/104976365
 https://blog.csdn.net/czh3642210/article/details/75043189
