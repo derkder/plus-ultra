@@ -1,0 +1,33 @@
+template：
+template <size_t DIM, typename T> struct vec {
+    vec() { for (size_t i=DIM; i--; data_[i] = T()); }
+          T& operator[](const size_t i)       { assert(i<DIM); return data_[i]; }
+    const T& operator[](const size_t i) const { assert(i<DIM); return data_[i]; }
+private:
+    T data_[DIM];
+};
+
+template关键字后面就可以跟声明时传入的参数，下面的vec<2,T>中的2对应size_t DIM, T是typename
+/////////////////////////////////////////////////////////////////////////////////
+
+
+template <typename T> struct vec<2,T> {
+    vec() : x(T()), y(T()) {}
+    vec(T X, T Y) : x(X), y(Y) {}
+    template <class U> vec<2,T>(const vec<2,U> &v);
+          T& operator[](const size_t i)       { assert(i<2); return i<=0 ? x : y; }
+    const T& operator[](const size_t i) const { assert(i<2); return i<=0 ? x : y; }
+
+    T x,y;
+};
+
+
+
+
+
+
+
+
+assert：
+assert的执行是判断expression是否为假，只有在表达式为假时，才会调用abort报警。
+就像上面的
