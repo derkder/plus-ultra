@@ -1,5 +1,0 @@
-STL(Standard Template Library,标准模板库)，
-是惠普实验室开发的一系列软件的统称。现在主要出现在 c++中，但是在引入 c++之前该技术已经存在很长时间了。
-
-STL 从广义上分为: 容器(container) 算法(algorithm) 迭代器(iterator)。
-https://blog.csdn.net/qq_42322103/article/details/99685797
