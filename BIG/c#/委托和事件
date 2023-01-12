@@ -1,0 +1,15 @@
+委托是存有对某个方法的引用的一种引用类型变量，就是可以把函数当作传入的变量
+声明委托的语法如下：
+delegate <return type> <delegate-name> <parameter list>
+例子：
+  1、定义委托
+      public delegate void printString(string s);//定义一个委托（此委托适用于有着void返回类型和一个string类型参数方法。）
+  2、实例化委托
+      //一旦声明了委托类型，委托对象必须使用 new 关键字来创建，且与一个特定的方法有关。
+      printString ps1 = new printString(WriteToScreen);//这里的WriteToScreen是一个函数的名字
+      printString ps2 = new printString(WriteToFile);
+  3、委托的多播      
+      
+      
+      
+事件
