@@ -24,7 +24,7 @@ Action的泛型T代表参数，T内可以传多个参数
 Action<int, string> action2;   // 有多个参数的Action
 action2 = (a, b) => Debug.Log("name: " + b + "\tage: " + a.ToString());
 action2 += (a, b) => Debug.Log("name: " + b + "\tage: " + (a + 1).ToString());
-action2(18, "Ousun");
+action2?.Invoke(18,"Ousun")
 
 
 
