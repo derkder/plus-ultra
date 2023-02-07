@@ -13,3 +13,20 @@ delegate <return type> <delegate-name> <parameter list>
       
       
 事件
+事件可以理解为委托的一个实例(不太严谨)，在类的内部声明事件，必须先声明该事件对应的委托类型
+同时事件不仅可以添加函数进去，还可以加入委托
+
+
+
+Action
+Action可以理解为系统定义好的带泛型的delegate，Action是无返回值的
+Action的泛型T代表参数，T内可以传多个参数
+Action<int, string> action2;   // 有多个参数的Action
+action2 = (a, b) => Debug.Log("name: " + b + "\tage: " + a.ToString());
+action2 += (a, b) => Debug.Log("name: " + b + "\tage: " + (a + 1).ToString());
+
+
+
+
+
+https://blog.csdn.net/m0_52941834/article/details/127589459
