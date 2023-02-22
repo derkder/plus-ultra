@@ -1,5 +1,5 @@
 当我们把新的资源导入Unity时，Unity会自动做下面这件事：
-1.分配唯一ID
+1.分配唯一ID【guid】
 2.创建.meta文件
 3.处理资源
 
@@ -19,3 +19,4 @@ meta文件一般包含了一下内容（id和导入设置的数据）
 
 
 https://blog.csdn.net/qq_18192161/article/details/85110640
+https://www.cnblogs.com/zhaoqingqing/p/5823927.html
