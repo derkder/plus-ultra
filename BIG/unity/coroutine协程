@@ -5,7 +5,7 @@
 
 2、协程的执行
 执行到协程相当于注册了事件，yield return才会把控制权交给外部线程，并不是协程和主要的一起跑！！！（但waitfor什么的又不一样）
-yield return new WaitForSecondsRealtime(5);//使用未缩放时间将协同程序执行暂停指定的秒数。[也就是所有程序都暂停了这些事件，所以可以冻结帧！]
+yield return new WaitForSecondsRealtime(5);//使用未缩放时间将协同程序执行暂停指定的秒数。[也就是所有程序都暂停了这些事件，所以可以冻结帧！！]
 截屏：yield return waitforendofFrame,这样可以等到啥都渲染好了再执行后面的协程内容，即会让后续的代码在 lateUpdtae 之后执行
 这样可以每一帧都执行一下协程（比起函数协程还能记录一个长线上的状态，例如淡出开一个协程，就可以每帧但一点点）
 
