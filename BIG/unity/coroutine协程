@@ -23,7 +23,7 @@ https://zhuanlan.zhihu.com/p/279383752
 中这样直接在当前函数调用栈中压入栈帧的协程我们称之为无栈协程。
 
 
-4、应用：
+4、应用：https://blog.csdn.net/hafeiyangha/article/details/125365152
   CaotureFromScreen使用yield return new waitforendofFrame来保证在lateUpdtae 之后再获得渲染好的图像
   使用协程来进行异步加载https://docs.unity3d.com/ScriptReference/SceneManagement.SceneManager.LoadSceneAsync.html
   将一个复杂程序分帧执行：如果一个复杂的函数对于一帧的性能需求很大，我们就可以通过yield return null将步骤拆除，从而将性能压力分摊开来，最终获取一个流畅的过程
