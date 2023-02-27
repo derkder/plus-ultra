@@ -21,3 +21,8 @@ https://zhuanlan.zhihu.com/p/279383752
 函数调用的本质是压栈，协程的唤醒也一样，调用IEnumerator.MoveNext()时会把协程方法体压入当前的函数调用栈中执行，运行到yield return后再弹栈。
 这点和有些语言中的协程不大一样，有些语言的协程会维护一个自己的函数调用栈，在唤醒的时候会把整个函数调用栈给替换，这类协程被称为有栈协程，而像C#
 中这样直接在当前函数调用栈中压入栈帧的协程我们称之为无栈协程。
+
+
+4、应用：
+CaotureFromScreen使用yield return new waitforendofFrame来保证在lateUpdtae 之后再获得渲染好的图像
+使用协程来进行异步加载https://docs.unity3d.com/ScriptReference/SceneManagement.SceneManager.LoadSceneAsync.html
