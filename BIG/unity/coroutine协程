@@ -34,4 +34,12 @@ https://zhuanlan.zhihu.com/p/279383752
             Show(image);
         }
   第三：将一个复杂程序分帧执行：如果一个复杂的函数对于一帧的性能需求很大，我们就可以通过yield return null将步骤拆除，从而将性能压力分摊开来，最终获取一个流畅的过程
+        IEnumerator LoadYourAsyncScene()
+        {
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("Scene2");
+            while (!asyncLoad.isDone)
+            {
+                yield return null;
+            }
+        }
   第四：定时器
