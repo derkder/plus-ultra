@@ -74,3 +74,22 @@ public class Test01 {
 
 
 
+
+
+
+
+private static AppManager instance;
+    public static AppManager Instance
+    {
+        get
+        {
+            GameObject _appManager = GameObject.Find("AppManager");
+            return _appManager.GetComponent<AppManager>();
+        }
+        set
+        {
+            Instance = value;
+        }
+    }
+
+
