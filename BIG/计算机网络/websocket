@@ -2,3 +2,4 @@ https://www.zhihu.com/question/20215561/answer/40316953
 是一种支持长连接的协议【相对http就是非持久的】
 
 
+webSocket是HTML5开始提供的一种在单个TCP连接上进行双工通讯的协议。
