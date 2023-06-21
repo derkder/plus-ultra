@@ -2,6 +2,16 @@
   const的值是在编译期间确定的，因此只能在声明时通过常量表达式指定其值。
   static readonly是在运行时计算出其值的，所以还可以通过静态构造函数来赋值。
 
-
-
 此外， 对于那些本质上应该是常量，但是却无法使用const来声明的地方，例如List<>,可以使用static readonly。
+
+
+
+
+
+
+p.s.
+  static readonly需要注意的一个问题是，对于一个static readonly的引用类型，只是被限定不能进行赋值（写）操作而已。而对其成员的读写仍然是不受限制的。
+                  public static readonly MyClass myins = new MyClass();
+                  …
+                  myins.SomeProperty = 10;  //正常
+                  myins = new MyClass();    //出错，该对象是只读的
