@@ -11,5 +11,5 @@
 
 ---
 
-![进程线程协程](BIG/操作系统/coroutine.png)
+![进程线程协程](/BIG/操作系统/coroutine.png)
 
