@@ -43,11 +43,17 @@ Console.WriteLine("Original value of {0}: {1}", varName, value);
 ---
 
 ##  反射的概念其实在unreal中更更常见：
-当我们使用C++类创建向导创建类的时候，引擎会把以下3行代码放到头文件中：  
+当我们使用C++类创建向导创建类的时候，引擎会把以下3行代码放到头文件中：  s
 ```
 #include "TypeName.generated.h"
 UCLASS()
 GENERATED_BODY()
 ```
 引擎需要这三行代码，使一个类对反射系统可见。(反射系统允许你将函数以及变量等暴露给蓝图和编辑器)。
+  
+使变量对反射系统可见：  
+```
+UPROPERTY()
+UStaticMeshComponent* Mesh;
+```
 
