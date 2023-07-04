@@ -14,7 +14,7 @@ yield return new WaitForSecondsRealtime(5);//使用未缩放时间将协同程�
 
   
 ## 3、协程的详细底层原理  
-协程分为两部分，协程与协程调度器：协程仅仅是一个能够中间暂停返回的函数，而协程调度是在MonoBehaviour的生命周期中实现的。   
+协程分为两部分，协程与协程调度器：协程仅仅是一个能够中间暂停返回的函数，而协程调度是在MonoBehaviour的生命周期中实现的。    
 准确的说，Unity只实现了协程调度部分，而协程本身其实就是用了C#原生的”迭代器方法“。  
 你调用此方法的时候不会真的运行，而是会返回一个迭代器  
 函数调用的本质是压栈，协程的唤醒也一样，调用IEnumerator.MoveNext()时会把协程方法体压入当前的函数调用栈中执行，运行到yield return后再弹栈。  
@@ -23,8 +23,8 @@ yield return new WaitForSecondsRealtime(5);//使用未缩放时间将协同程�
 
 
 ## 4、应用：https://blog.csdn.net/hafeiyangha/article/details/125365152
-  第一：CaotureFromScreen使用yield return new waitforendofFrame来保证在lateUpdtae 之后再获得渲染好的图像  
-  第二：使用协程来进行异步加载https://docs.unity3d.com/ScriptReference/SceneManagement.SceneManager.LoadSceneAsync.html  
+  第一：CaotureFromScreen使用yield return new waitforendofFrame来保证在lateUpdtae 之后再获得渲染好的图像    
+  第二：使用协程来进行异步加载https://docs.unity3d.com/ScriptReference/SceneManagement.SceneManager.LoadSceneAsync.html    
 ```
     //伪代码
     IEnumerator ShowImageFromUrl(string url)
@@ -34,8 +34,9 @@ yield return new WaitForSecondsRealtime(5);//使用未缩放时间将协同程�
         Show(image);
     }
 ```
-
-  第三：将一个复杂程序分帧执行：如果一个复杂的函数对于一帧的性能需求很大，我们就可以通过yield return null将步骤拆除，从而将性能压力分摊开来，最终获取一个流畅的过程
+     
+  第三：将一个复杂程序分帧执行：如果一个复杂的函数对于一帧的性能需求很大，我们就可以通过yield return null将步骤拆除，从而将性能压力分摊开来，最终获取一个流畅的过程  
+  ```
         IEnumerator LoadYourAsyncScene()
         {
             AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("Scene2");
@@ -44,4 +45,6 @@ yield return new WaitForSecondsRealtime(5);//使用未缩放时间将协同程�
                 yield return null;
             }
         }
-  第四：定时器
+```
+  第四：定时器  
+  
