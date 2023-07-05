@@ -15,3 +15,26 @@ public void GreetPeople(string name, Language lang)
             break;
     }
 }
+
+
+
+另一种通用方法：
+定义：
+public enum Day{
+    Monday = 1,
+    Tuesday = 2,
+    Wednesday = 3,
+    Thursday = 4,
+    Friay = 5,
+    Saturday = 6,
+    Sunday = 7,
+}
+
+应用：
+private int temp = 1;
+OnSubmit((Day)temp);
+private void OnSubmit(Day day){
+    if(Tuesday == day){
+        ...
+    }
+}
