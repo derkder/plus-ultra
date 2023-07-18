@@ -1,2 +1,4 @@
 https://blog.csdn.net/whyel/article/details/81067989
 符号 + 指数 + 尾数
+float的规格化表示为：±1.f×2^{E - 127}
+其中，f是尾数，E是指数
