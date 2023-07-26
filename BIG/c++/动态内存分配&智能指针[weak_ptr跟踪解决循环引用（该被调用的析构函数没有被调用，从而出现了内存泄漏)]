@@ -25,3 +25,9 @@ ListNode *list=new ListNode(0);
 独占指针（unique_ptr）（调用 move() 函数相互赋值）：独享所有权的智能指针，资源只能被一个指针占有，该指针不能拷贝构造和赋值。
 弱指针（weak_ptr）：指向 share_ptr 指向的对象，能够解决由shared_ptr带来的循环引用问题。
 智能指针的实现原理： 计数原理。
+
+
+
+
+weak_ptr是为了解决shared_ptr的循环引用问题，那为什么不用raw ptr来解决这个问题？
+一个weak_ptr绑定到shared_ptr之后不会增加引用计数，一旦最后一个指向对象的shared_ptr被销毁，对象就会被释放，即使weak_ptr指向对象，也还是会释放；raw指针，当对象销毁之后会变成悬浮指针。
