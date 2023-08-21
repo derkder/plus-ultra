@@ -9,27 +9,26 @@ inline就是一种静态链接
     动态多态：是基于虚函数实现的。
   静态多态：
     函数重载：
-      int add(int a, int b) return a + b;
-      double add(double a, double b)  return a + b;
+        int add(int a, int b) return a + b;
+        double add(double a, double b)  return a + b;
     运算符重载：在类的定义中定义类之间的运算，像加这种
-    class Complex {
-    public:
-        double real;
-        double imag;
-        Complex(double r, double i) : real(r), imag(i) {}
-        // + 运算符重载
-        Complex operator+(const Complex& other) {
-            return Complex(real + other.real, imag + other.imag);
+        class Complex {
+        public:
+            double real;
+            double imag;
+            Complex(double r, double i) : real(r), imag(i) {}
+            // + 运算符重载
+            Complex operator+(const Complex& other) {
+                return Complex(real + other.real, imag + other.imag);
+            }
+        };
+        int main() {
+            Complex num1(2.0, 3.0);
+            Complex num2(1.5, 2.5);
+            Complex sum = num1 + num2;  // 使用重载的 + 运算符
+            std::cout << "Sum: " << sum.real << " + " << sum.imag << "i" << std::endl;
+            return 0;
         }
-    };
-    
-    int main() {
-        Complex num1(2.0, 3.0);
-        Complex num2(1.5, 2.5);
-        Complex sum = num1 + num2;  // 使用重载的 + 运算符
-        std::cout << "Sum: " << sum.real << " + " << sum.imag << "i" << std::endl;
-        return 0;
-    }
 
 
 
