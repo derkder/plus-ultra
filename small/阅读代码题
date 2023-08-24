@@ -1,0 +1,24 @@
+#include <stdio.h>
+class Base
+{
+public:
+    virtual int foo(int x) { return x * 10; }
+    int foo(char x[14]) { return sizeof(x) + 10; }
+};
+class Derived : public Base
+{
+    int foo(int x) { return x * 20; }
+    virtual int foo(char x[10]) { return sizeof(x) + 20; }
+};
+int main(void)
+{
+    Derived stDerived;
+    Base *pstBase = &stDerived;
+    char x[10];
+    printf("%d\n", pstBase->foo(100) + pstBase->foo(x));
+    return 0;
+}
+
+调用 pstBase->foo(100)，会根据派生类类型选择调用 Derived::foo(int) 函数。该函数返回 100 * 20 = 2000。
+调用 pstBase->foo(x)，由于基类指针无法动态确定调用哪个虚函数，因此根据基类类型选择调用 Base::foo(char) 函数，其返回值为 sizeof(x) + 10，即 10 + 10 = 20。
+打印 2000 + 20 = 2020。
