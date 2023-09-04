@@ -31,6 +31,7 @@ System.Reflection.Assembly 类－－它可以用于访问给定程序集的信�
 ## 实际的应用场景：  
 通过名字找gameobject很容易，但是当我们想通过字符串的名字找字符串的值时，就得用这个了  
 以下是一个通过MyClass的变量名读取变量值的例子  
+##### unity
 ```
 MyClass myClass = new MyClass();
 string varName = "myInt1";
@@ -38,7 +39,8 @@ FieldInfo field = typeof(MyClass).GetField(varName);
 int value = (int)field.GetValue(myClass);
 Console.WriteLine("Original value of {0}: {1}", varName, value);
 ```
-  
+##### unreal
+UFUNCTION（BlueprintCallable）支持蓝图和C++的交互功能
 
 
 
