@@ -79,5 +79,5 @@ InitializeAndReturn(out result);
 Console.WriteLine(result); // 输出 10
 ```
 
-#### 16、c++里vector和list的区别
+#### 16、c++里vector和list的区别。deque[map实现，相比vector前面是可以随便插入的，而且也不用扩容的时候整个挪]
 vector数组，list双向链表。vector查找方便，插入删除不方便，list反过来。vector会浪费空间且有迭代器失效的问题，list反过来。
