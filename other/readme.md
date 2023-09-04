@@ -59,6 +59,9 @@ ref 通常用于传递已经初始化的变量;out 通常用于返回多个值�
 void InitializeAndReturn(out int x) {
     x = 10; // 必须在方法内部分配一个值
 }
+int result;
+InitializeAndReturn(out result);
+Console.WriteLine(result); // 输出 10
 ```
 
 #### 16、c++里vector和list的区别
