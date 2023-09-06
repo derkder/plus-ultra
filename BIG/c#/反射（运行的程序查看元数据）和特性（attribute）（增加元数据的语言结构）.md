@@ -1,4 +1,4 @@
-[https://zhuanlan.zhihu.com/p/60622181]
+[https://zhuanlan.zhihu.com/p/60622181]   
 [https://blog.csdn.net/u012999985/article/details/52902065]
 ## 元数据与反射：    
 是描述程序的二进制信息，存储在公共语言运行时可移植可执行 (PE) 文件或内存中。当您将代码编译为 PE 文件时，元数据将插入文件的一部分，您的代码将转换为 Microsoft 中间语言 (MSIL)   
