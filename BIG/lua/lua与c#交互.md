@@ -22,3 +22,15 @@ LuaFunction add = lua.GetFunction("Add");
 Object[] obj = add.Call(12, 30);
 Console.WriteLine(obj[0]);
 ```
+
+
+### Lua操作C#
+```
+require("luanet")    --引入luanet.dll，该dll文件需与该lua文件在同一路径下
+
+luanet.load_assembly("LuaWithCSharpTest")   --加载程序集(自己写的项目程序集)
+luanet.load_assembly("System")              --加载程序集(C#内置的程序集)
+
+Console = luanet.import_type("System.Console")    --获取System程序集下的Console类
+Console.WriteLine("商品名：{0},价格：{1}","大刀",50)    --现在可以调用C#中的方法
+```
