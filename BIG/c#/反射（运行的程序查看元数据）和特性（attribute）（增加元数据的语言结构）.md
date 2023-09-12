@@ -45,6 +45,7 @@ Console.WriteLine("Original value of {0}: {1}", varName, value);
   
 
 ##  反射的概念其实在unreal中更更常见：
+#### 具体使用
 当我们使用C++类创建向导创建类的时候，引擎会把以下3行代码放到头文件中：  s
 ```
 #include "TypeName.generated.h"
@@ -60,3 +61,10 @@ UStaticMeshComponent* Mesh;
 ```
      
 UFUNCTION（BlueprintCallable）支持蓝图和C++的交互功能
+#### 内部实现
+一、标记  
+1、添加头文件 #include "FileName.generated.h"  
+2、使用UENUM()、UCLASS()、USTRUCT()、UFUNCTION()、UPROPERTY()来标记  
+二、UnrealBuildTool和UnrealHeaderTool  
+1、UBT扫描头文件，**记录**所有包含反射类型的modules  
+2、当其中有头文件改变时，就会用UHT**更新**反射数据。UHT解析头文件，扫描标记，生成用于支持反射的C++代码。
