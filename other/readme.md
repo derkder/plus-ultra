@@ -40,8 +40,8 @@ color = (A.rgb * A.a) + (B.rgb * (1 - A.a))
 #### 12 之前偷偷记下来的那个剔除
 #### 13 既然直接传人物坐标也可以，为什么非要rendertarget实现痕迹
 #### 14 间接光照、直接光照
-### 15 UE的新技术，一直没听清名字，华为一二面都问了
-
+#### 15 UE的新技术，一直没听清名字，华为一二面都问了
+#### 16 两个向量之间是否在同一个平面上
 
 ## c++、c#、lua八股
 #### 1、类里面装static属性的成员会怎么样 （static有什么用）
@@ -120,4 +120,5 @@ why lua：因为Ios 通过设置内存 No eXecute 限制了 JIT 的使用，而 
 [反射](https://github.com/derkder/plus-ultra/blob/main/BIG/c%23/%E5%8F%8D%E5%B0%84%EF%BC%88%E8%BF%90%E8%A1%8C%E7%9A%84%E7%A8%8B%E5%BA%8F%E6%9F%A5%E7%9C%8B%E5%85%83%E6%95%B0%E6%8D%AE%EF%BC%89%E5%92%8C%E7%89%B9%E6%80%A7%EF%BC%88attribute%EF%BC%89%EF%BC%88%E5%A2%9E%E5%8A%A0%E5%85%83%E6%95%B0%E6%8D%AE%E7%9A%84%E8%AF%AD%E8%A8%80%E7%BB%93%E6%9E%84%EF%BC%89.md)
 #### 7 unreal中的actor和component
 [https://zhuanlan.zhihu.com/p/22833151]
+#### 8 封闭开放原则
 
