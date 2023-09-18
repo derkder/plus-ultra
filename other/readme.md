@@ -36,6 +36,10 @@ color = (A.rgb * A.a) + (B.rgb * (1 - A.a))
 #### 10、模型是怎么分成三角面得
 说了下全忘光光得曲面塌缩算法
 #### 11 early - z
+#### 12 之前偷偷记下来的那个剔除
+#### 13 既然直接传人物坐标也可以，为什么非要rendertarget实现痕迹
+#### 14 间接光照、直接光照
+
 
 ## c++、c#、lua八股
 #### 1、类里面装static属性的成员会怎么样 （static有什么用）
@@ -91,6 +95,8 @@ Console.WriteLine(result); // 输出 10
 
 #### 16、c++里vector和list的区别。deque[map实现，相比vector前面是可以随便插入的，而且也不用扩容的时候整个挪]
 vector数组，list双向链表。vector查找方便，插入删除不方便，list反过来。vector会浪费空间且有迭代器失效的问题，list反过来。
+### 17、float a = 1/3;double a = 1 / 3;比大小
+
 
 
 
