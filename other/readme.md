@@ -100,7 +100,7 @@ Console.WriteLine(result); // 输出 10
 #### 16、c++里vector和list的区别。deque[map实现，相比vector前面是可以随便插入的，而且也不用扩容的时候整个挪]
 vector数组，list双向链表。vector查找方便，插入删除不方便，list反过来。vector会浪费空间且有迭代器失效的问题，list反过来。
 ### 17、float a = 1/3;double a = 1 / 3;比大小
-
+两者在计算机里的表示不一样，所以对于这种无理数，double可以多记到后面几位
 
 
 
