@@ -114,7 +114,7 @@ vector数组，list双向链表。vector查找方便，插入删除不方便，l
 #### 3、 ecs
 entity是对象，是人物，component才是数据，是unity里中的那个component
 #### 4、lua怎么和c#交互的，怎么实现热更新的，什么是里面的解释性语言思想
-[lua与c#交互](https://github.com/derkder/plus-ultra/blob/main/BIG/c%23/%E5%8F%8D%E5%B0%84%EF%BC%88%E8%BF%90%E8%A1%8C%E7%9A%84%E7%A8%8B%E5%BA%8F%E6%9F%A5%E7%9C%8B%E5%85%83%E6%95%B0%E6%8D%AE%EF%BC%89%E5%92%8C%E7%89%B9%E6%80%A7%EF%BC%88attribute%EF%BC%89%EF%BC%88%E5%A2%9E%E5%8A%A0%E5%85%83%E6%95%B0%E6%8D%AE%E7%9A%84%E8%AF%AD%E8%A8%80%E7%BB%93%E6%9E%84%EF%BC%89.md)    
+[lua与c#交互](https://github.com/derkder/plus-ultra/blob/main/BIG/lua/lua%E4%B8%8Ec%23%E4%BA%A4%E4%BA%92.md)   
 Lua是解释型语言，代码在运行时才被解释器一行行动态翻译和执行  
 why lua：因为Ios 通过设置内存 No eXecute 限制了 JIT 的使用，而 Lua 可以通过 AoT 等方式编译运行 
 #### 5、aa相比ab的优势劣势
