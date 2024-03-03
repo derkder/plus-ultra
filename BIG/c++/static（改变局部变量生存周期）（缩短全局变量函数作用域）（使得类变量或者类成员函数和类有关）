@@ -10,6 +10,7 @@ static 定义静态变量，静态函数。
 
 
 
-对于第四条超级牛逼的应用：   
-ubiq sdk里的NetWorkSpawnManager里的find方法就是static的 
-这样的话，可以不创建 NetworkSpawnManager 类的实例而直接调用 Find 方法，就找到了场景里的 NetworkSpawnManager !  
+对于第四条超级牛逼的应用：     
+ubiq sdk里的NetWorkSpawnManager里的find方法就是static的    
+这样的话，可以不创建 NetworkSpawnManager 类的实例而直接调用 Find 方法，就找到了场景里的 NetworkSpawnManager !    
+（但是其实还是单例更牛逼，直接在别的脚本里GameManager.Instance直接就调用了。但是如果不想要单例的性质的话，就可以用上面的  
