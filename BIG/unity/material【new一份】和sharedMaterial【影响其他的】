@@ -1,2 +1,13 @@
    使用material属性的时候，每次都会new一份新的material作用与它，但不会改变本地工程中的材质material；sharedMaterial是共享材质，
    无论使用多少次，内存中都只会占用一份内存，但是会影响其他使用同一材质球的对象
+
+
+
+
+MeshRender中Material和SharedMaterial的区别？
+   Material是Mesh Renderer组件的实例材质，它是该组件所使用的材质的一个副本。这意味着，如果您更改一个对象的Material属性，它将只会影响该对象的渲染，而不会影响其他对象的渲染。
+   SharedMaterial是Mesh Renderer组件的共享材质，它是该组件所使用的材质的原型。这意味着，如果您更改一个对象的SharedMaterial属性，它将会影响所有使用该共享材质的对象的渲染。这
+使得SharedMaterial特别适用于需要在多个对象之间共享材质的情况，因为它可以减少内存使用量和减少重复材质的数量。
+   总之，在大多数情况下，我们应该使用SharedMaterial来减少内存使用和提高性能。只有在需要单独更改某个对象的材质时，才应该使用Material属性。
+   此外，SharedMaterial允许多个对象共享一个材质。这意味着在渲染时可以将它们一起批处理，从而减少Draw Call的数量，提高渲染性能。而如果使用Material，每个对象都有一个单独的材质实例，
+需要单独绘制，这会增加Draw Call的数量，影响性能。
