@@ -67,4 +67,5 @@ UFUNCTION（BlueprintCallable）支持蓝图和C++的交互功能
 2、使用UENUM()、UCLASS()、USTRUCT()、UFUNCTION()、UPROPERTY()来标记  
 二、UnrealBuildTool和UnrealHeaderTool  
 1、UBT扫描头文件，**记录**所有包含反射类型的modules  
-2、当其中有头文件改变时，就会用UHT**更新**反射数据。UHT解析头文件，扫描标记，生成用于支持反射的C++代码。
+2、当其中有头文件改变时，就会用UHT**更新**反射数据。UHT解析头文件，扫描标记，生成用于支持反射的C++代码。    
+3、UBT本身是干什么的：当你在虚幻引擎中创建一个游戏项目时，你会写很多代码，还会用到很多资源。UBT会帮你把这些东西整理好，检查有没有错误，然后把它们变成一个可以运行的游戏程序。
