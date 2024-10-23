@@ -107,6 +107,9 @@ vector数组，list双向链表。vector查找方便，插入删除不方便，l
 两者在计算机里的表示不一样，所以对于这种无理数，double可以多记到后面几位
 #### 18、委托和事件的本质区别（他说一个是类？）
 #### 19、absract class和interface的区别
+#### 20、假设我定义了一个父类和一堆子类，我现在撞到了一堆子类想用list维护它，我list里的类型是什么
+不是对象，是指针。另外如果Monster monsters[] = { Dragon(), Werewolf() };错误地这样子用对象而不是指针定义，c++会做一步叫对象切片的东西，全部切成父类，就算你用monsters[i].attack()调用，只能拿到父类地函数。应该做的是：Monster* monsters[] = { new Dragon(), new Werewolf() };
+
 
 
 ## 其余八股
